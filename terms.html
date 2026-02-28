@@ -332,13 +332,12 @@
             padding-left: 5px;
         }
 
-        /* SOCIAL SHARE SECTION - पहले वाला स्टाइल */
+        /* SOCIAL SHARE SECTION - आइकॉन के साथ, एक के नीचे एक */
         .social-share-section {
             max-width: 1000px;
             margin: 30px auto 0;
-            padding: 0 25px;
+            padding: 30px 25px 20px;
             border-top: 1px solid #334155;
-            padding-top: 30px;
         }
         
         .social-share-section h5 {
@@ -349,23 +348,26 @@
             letter-spacing: 0.5px;
         }
         
-        .social-links {
+        .social-share-section ul {
             list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+            padding: 0;
+            margin: 0;
         }
         
-        .social-links li {
-            margin: 0;
+        .social-share-section li {
+            margin-bottom: 15px;
             padding: 0;
         }
         
-        .social-links a,
-        .social-links button {
+        .social-share-section li:last-child {
+            margin-bottom: 0;
+        }
+        
+        .social-share-section a,
+        .social-share-section button {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             color: #cbd5e1;
             text-decoration: none;
             background: transparent;
@@ -376,29 +378,25 @@
             cursor: pointer;
             width: 100%;
             text-align: left;
-            transition: all 0.2s ease;
+            transition: color 0.2s ease;
         }
         
-        .social-links a:hover,
-        .social-links button:hover {
+        .social-share-section a:hover,
+        .social-share-section button:hover {
             color: var(--primary);
             padding-left: 5px;
         }
         
-        .social-links i {
+        .social-share-section i {
             width: 18px;
             height: 18px;
             color: #94a3b8;
             transition: color 0.2s ease;
         }
         
-        .social-links a:hover i,
-        .social-links button:hover i {
+        .social-share-section a:hover i,
+        .social-share-section button:hover i {
             color: var(--primary);
-        }
-        
-        .share-link-text {
-            flex: 1;
         }
 
         .footer-bottom {
@@ -615,38 +613,38 @@
             </div>
         </div>
 
-        <!-- SOCIAL SHARE SECTION - पहले वाला स्टाइल -->
+        <!-- SOCIAL SHARE SECTION - आइकॉन के साथ, एक के नीचे एक -->
         <div class="social-share-section">
             <h5>SHARE</h5>
-            <ul class="social-links">
+            <ul>
                 <li>
                     <a href="https://wa.me/?text=Check out ImResizer - Free online image compressor for exams! https://imresizer.in" target="_blank" rel="noopener noreferrer">
                         <i data-lucide="message-circle" width="18" height="18"></i>
-                        <span class="share-link-text">WhatsApp</span>
+                        WhatsApp
                     </a>
                 </li>
                 <li>
                     <a href="https://t.me/share/url?url=https://imresizer.in&text=Free image compressor for exam forms - 20KB, 50KB, 100KB" target="_blank" rel="noopener noreferrer">
                         <i data-lucide="send" width="18" height="18"></i>
-                        <span class="share-link-text">Telegram</span>
+                        Telegram
                     </a>
                 </li>
                 <li>
                     <a href="https://www.facebook.com/sharer/sharer.php?u=https://imresizer.in" target="_blank" rel="noopener noreferrer">
                         <i data-lucide="facebook" width="18" height="18"></i>
-                        <span class="share-link-text">Facebook</span>
+                        Facebook
                     </a>
                 </li>
                 <li>
                     <a href="https://twitter.com/intent/tweet?url=https://imresizer.in&text=Compress images to 20KB, 50KB, 100KB for exams - Free tool!" target="_blank" rel="noopener noreferrer">
                         <i data-lucide="x" width="18" height="18"></i>
-                        <span class="share-link-text">X (Twitter)</span>
+                        X (Twitter)
                     </a>
                 </li>
                 <li>
                     <button onclick="copyPageLink()">
                         <i data-lucide="link" width="18" height="18"></i>
-                        <span class="share-link-text">Copy Link</span>
+                        Copy Link
                     </button>
                 </li>
             </ul>
