@@ -581,17 +581,5 @@
                 alert('Link copied to clipboard! Share it with your friends.');
             });
         }
-
-        // Remove any potential tracking parameters from URL
-        (function() {
-            var uri = window.location.toString();
-            var clean_uri = uri;
-            if (clean_uri.indexOf("?m=1") > 0) clean_uri = clean_uri.substring(0, clean_uri.indexOf("?m=1"));
-            else if (clean_uri.indexOf("&m=1") > 0) clean_uri = clean_uri.substring(0, clean_uri.indexOf("&m=1"));
-            if (clean_uri.indexOf("%3D") > 0) clean_uri = clean_uri.substring(0, clean_uri.indexOf("%3D"));
-            if (uri !== clean_uri) window.history.replaceState({}, document.title, clean_uri);
-        })();
-    </script>
-
 </body>
 </html>
