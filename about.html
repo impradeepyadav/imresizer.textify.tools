@@ -2,46 +2,57 @@
 <html lang="en" itemscope itemtype="http://schema.org/WebApplication">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <meta name="yandex-verification" content="6e105f6188a8c833" />
+    <meta name="google-site-verification" content="adRkeSd13WOOtl240N_RB8FWfNn_FAz9JG2DhWapRFE" />
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LYMH20N85"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-9LYMH20N85');
+    </script>
     
     <!-- Primary SEO Tags -->
     <title>About Us - ImResizer</title>
     <meta name="description" content="Learn about ImResizer, the most trusted online image resizer and compressor tool. 100% free, secure, client-side processing for government exam forms and passport photos.">
     <meta name="keywords" content="about imresizer, image resizer tool, online image compressor, about us, image editing tool, free image resizer, secure image compressor">
     
-    <link rel="canonical" href="https://imresizer.textify.tools/about.html" />
+    <link rel="canonical" href="https://imresizer.in/about.html" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://imresizer.textify.tools/about.html">
+    <meta property="og:url" content="https://imresizer.in/about.html">
     <meta property="og:title" content="About ImResizer - Trusted Image Resizer Tool">
     <meta property="og:description" content="Learn about ImResizer, the most trusted online image resizer and compressor tool for government exam forms and passport photos.">
-    <meta property="og:image" content="https://imresizer.textify.tools/og-image.jpg">
+    <meta property="og:image" content="https://imresizer.in/og-image.jpg">
 
-    <!-- Twitter SEO -->
+    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:title" content="About ImResizer - Trusted Image Resizer Tool">
     <meta property="twitter:description" content="Learn about ImResizer, the most trusted online image resizer and compressor tool.">
   
     <!-- Favicon -->
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
     <!-- Schema Markup -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "AboutPage",
       "name": "About ImResizer",
-      "url": "https://imresizer.textify.tools/about.html",
+      "url": "https://imresizer.in/about.html",
       "description": "ImResizer is a free online image resizer and compressor tool for government exam forms and passport photos.",
       "publisher": {
         "@type": "Organization",
-        "name": "Textify Tools",
-        "logo": "https://textify.tools/logo.png"
+        "name": "ImResizer",
+        "logo": "https://imresizer.in/apple-touch-icon.png"
       }
     }
     </script>
@@ -55,31 +66,22 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://textify.tools/"
+          "item": "https://imresizer.in/"
         },
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Image Resizer",
-          "item": "https://imresizer.textify.tools/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
           "name": "About Us",
-          "item": "https://imresizer.textify.tools/about.html"
+          "item": "https://imresizer.in/about.html"
         }
       ]
     }
     </script>
 
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
+    
     <style>
-        /* --- CORE THEME (Same as index.html) --- */
+        /* --- CORE THEME - CLEAN & PROFESSIONAL --- */
         :root {
             --primary: #2563eb;
             --primary-dark: #1e40af;
@@ -89,36 +91,26 @@
             --line-color: #e5e7eb;
             --accent-bg: #f8fafc;
             --highlight: #dbeafe;
-            --error: #ef4444;
-            --success: #22c55e;
             --footer-bg: #0f172a;
             --footer-text: #94a3b8;
         }
 
-        /* Prevent Selection */
-        body {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
+        * { 
+            box-sizing: border-box; 
+            -webkit-tap-highlight-color: transparent; 
+            margin: 0;
+            padding: 0;
         }
-        
-        input, textarea, select {
-            -webkit-user-select: text;
-            -moz-user-select: text;
-            -ms-user-select: text;
-            user-select: text;
-        }
-
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            margin: 0; padding: 0; 
             background-color: var(--bg-color); 
             color: var(--text-main);
-            display: flex; flex-direction: column; min-height: 100vh;
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh;
             -webkit-font-smoothing: antialiased;
+            line-height: 1.5;
         }
 
         /* HEADER */
@@ -127,10 +119,14 @@
             border-bottom: 1px solid var(--line-color); 
             background: white; 
         }
+        
         .navbar { 
             max-width: 1000px;
-            margin: 0 auto; padding: 0 20px; 
-            display: flex; justify-content: space-between; align-items: center;
+            margin: 0 auto; 
+            padding: 0 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
         }
         
         .brand-logo { 
@@ -138,61 +134,103 @@
             align-items: center; 
             gap: 6px; 
             text-decoration: none; 
-            cursor: pointer;
         }
+        
         .logo-icon-box {
-            background-color: transparent;
-            color: #000000;
             width: 32px;
             height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: #000;
         }
+        
         .logo-text {
             font-size: 24px;
             font-weight: 800;
             color: var(--text-main);
             letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
         }
         .logo-text span { color: var(--primary); }
 
         /* MAIN LAYOUT */
         .container { 
             max-width: 900px;
-            width: 100%; margin: 30px auto; padding: 0 20px; flex: 1;
+            width: 100%; 
+            margin: 30px auto; 
+            padding: 0 20px; 
+            flex: 1;
         }
 
         /* TYPOGRAPHY */
         h1 { 
             font-size: 34px;
-            font-weight: 800; margin-bottom: 10px; color: var(--text-main); 
-            line-height: 1.2; letter-spacing: -0.5px;
+            font-weight: 800; 
+            margin-bottom: 20px; 
+            color: var(--text-main); 
+            line-height: 1.2; 
+            letter-spacing: -0.5px;
         }
-        h2 { font-size: 26px; color: var(--text-main); margin-bottom: 20px; margin-top: 40px; font-weight: 700;
-            border-bottom: 2px solid var(--highlight); padding-bottom: 10px; }
-        h3 { font-size: 20px; color: var(--text-main);
-            margin-bottom: 10px; margin-top: 30px; font-weight: 700; }
-        h4 { font-size: 18px; color: var(--text-main);
-            margin-bottom: 8px; margin-top: 20px; font-weight: 600; }
-        p { line-height: 1.8; color: var(--text-light); margin-bottom: 15px; font-size: 16px; }
+        
+        h2 { 
+            font-size: 26px; 
+            color: var(--text-main); 
+            margin: 40px 0 20px; 
+            font-weight: 700;
+            border-bottom: 2px solid var(--highlight); 
+            padding-bottom: 10px; 
+        }
+        
+        h3 { 
+            font-size: 20px; 
+            color: var(--text-main);
+            margin: 30px 0 15px; 
+            font-weight: 700; 
+        }
+        
+        p { 
+            line-height: 1.8; 
+            color: var(--text-light); 
+            margin-bottom: 20px; 
+            font-size: 16px; 
+        }
         
         /* BACK BUTTON */
         .back-link {
-            color: var(--primary); cursor: pointer; font-weight: 600; 
-            display: flex; align-items: center; gap: 5px; margin-bottom: 20px; 
+            color: var(--primary); 
+            font-weight: 600; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-bottom: 25px; 
             text-decoration: none;
+            transition: color 0.2s ease;
+            cursor: pointer;
         }
-        .back-link:hover { color: var(--primary-dark); }
+        
+        .back-link:hover { 
+            color: var(--primary-dark); 
+            gap: 10px;
+        }
 
         /* CONTENT BLOCK */
-        .content-block { margin-bottom: 40px; }
-        .content-block ul, .content-block ol { padding-left: 20px; color: var(--text-light); margin-bottom: 20px; }
-        .content-block li { margin-bottom: 10px; line-height: 1.7; }
+        .content-block { 
+            margin-bottom: 40px; 
+        }
+        
+        .content-block ul, 
+        .content-block ol { 
+            padding-left: 25px; 
+            color: var(--text-light); 
+            margin-bottom: 25px; 
+        }
+        
+        .content-block li { 
+            margin-bottom: 10px; 
+            line-height: 1.7; 
+        }
 
-        /* FOOTER STYLING (Same as index.html) */
+        /* ===== FOOTER - पहले वाला स्टाइल ===== */
         footer {
             background-color: var(--footer-bg);
             color: var(--footer-text);
@@ -234,6 +272,7 @@
             text-decoration: none;
             cursor: pointer;
         }
+        
         .footer-logo-icon {
             background-color: transparent;
             color: white;
@@ -243,12 +282,16 @@
             align-items: center;
             justify-content: center;
         }
+        
         .footer-logo-text {
             font-size: 20px;
             font-weight: 800;
             color: white;
         }
-        .footer-logo-text span { color: var(--primary); }
+        
+        .footer-logo-text span { 
+            color: var(--primary); 
+        }
 
         .footer-links {
             list-style: none;
@@ -273,6 +316,75 @@
             padding-left: 5px;
         }
 
+        /* SOCIAL SHARE SECTION - पहले वाला स्टाइल */
+        .social-share-section {
+            max-width: 1000px;
+            margin: 30px auto 0;
+            padding: 0 25px;
+            border-top: 1px solid #334155;
+            padding-top: 30px;
+        }
+        
+        .social-share-section h5 {
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+        
+        .social-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .social-links li {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .social-links a,
+        .social-links button {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #cbd5e1;
+            text-decoration: none;
+            background: transparent;
+            border: none;
+            padding: 0;
+            font-family: inherit;
+            font-size: 14px;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+        
+        .social-links a:hover,
+        .social-links button:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        
+        .social-links i {
+            width: 18px;
+            height: 18px;
+            color: #94a3b8;
+            transition: color 0.2s ease;
+        }
+        
+        .social-links a:hover i,
+        .social-links button:hover i {
+            color: var(--primary);
+        }
+        
+        .share-link-text {
+            flex: 1;
+        }
+
         .footer-bottom {
             max-width: 1000px;
             margin: 50px auto 0;
@@ -292,7 +404,6 @@
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
-            .footer-brand p { max-width: 100%; }
             .footer-bottom {
                 flex-direction: column;
                 gap: 15px;
@@ -304,7 +415,7 @@
         .hidden { display: none !important; }
     </style>
 </head>
-<body oncontextmenu="return false;">
+<body>
 
     <header>
         <div class="navbar">
@@ -314,14 +425,15 @@
                 </div>
                 <div class="logo-text">Im<span>Resizer</span></div>
             </a>
-            <span style="font-size:12px; color:var(--text-light); font-weight:600; background: #f3f4f6; padding: 6px 10px; border-radius: 6px; border: 1px solid #e5e7eb;">Free Tool</span>
+            <span style="font-size:12px; color:var(--text-light); font-weight:500; background: #f3f4f6; padding: 6px 10px; border-radius: 6px; border: 1px solid #e5e7eb;">Free Tool</span>
         </div>
     </header>
 
     <main class="container">
         
         <a href="/" class="back-link">
-            <i data-lucide="arrow-left" width="16"></i> Back to Tool
+            <i data-lucide="arrow-left" width="16" height="16"></i>
+            Back to Tool
         </a>
 
         <h1>About ImResizer</h1>
@@ -356,22 +468,15 @@
             </ul>
 
             <h2>Our Technology</h2>
-            <p>ImResizer is built using modern web technologies that run entirely in your browser. We use:</p>
-            <ul>
-                <li>HTML5 Canvas for image processing</li>
-                <li>Cropper.js for precise cropping</li>
-                <li>jsPDF for PDF generation</li>
-                <li>Lucide icons for beautiful interface</li>
-            </ul>
-            <p>All processing happens locally on your device. No servers, no uploads, no privacy concerns.</p>
+            <p>ImResizer is built using modern web technologies that run entirely in your browser. We use HTML5 Canvas for image processing, Cropper.js for precise cropping, and jsPDF for PDF generation. All processing happens locally on your device. No servers, no uploads, no privacy concerns.</p>
 
             <h2>Our Team</h2>
-            <p>ImResizer is a product of <strong>Textify Tools</strong>, a small team of developers passionate about creating useful, privacy-focused utilities for students and professionals. We believe that essential tools should be free, accessible, and secure for everyone.</p>
+            <p>ImResizer is a small team of developers passionate about creating useful, privacy-focused utilities for students and professionals. We believe that essential tools should be free, accessible, and secure for everyone.</p>
 
             <h2>Contact Us</h2>
             <p>Have questions, suggestions, or feedback? We'd love to hear from you:</p>
             <ul>
-                <li>Email: <strong>support@imresizer.com</strong></li>
+                <li>Email: <strong>support@imresizer.in</strong></li>
                 <li>Response Time: Within 24-48 hours</li>
             </ul>
 
@@ -380,6 +485,7 @@
         </div>
     </main>
 
+    <!-- ===== FOOTER - पहले वाला स्टाइल ===== -->
     <footer>
         <div class="footer-container">
             <div class="footer-col footer-brand">
@@ -411,53 +517,81 @@
             </div>
         </div>
 
+        <!-- SOCIAL SHARE SECTION - पहले वाला स्टाइल -->
+        <div class="social-share-section">
+            <h5>SHARE</h5>
+            <ul class="social-links">
+                <li>
+                    <a href="https://wa.me/?text=Check out ImResizer - Free online image compressor for exams! https://imresizer.in" target="_blank" rel="noopener noreferrer">
+                        <i data-lucide="message-circle" width="18" height="18"></i>
+                        <span class="share-link-text">WhatsApp</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://t.me/share/url?url=https://imresizer.in&text=Free image compressor for exam forms - 20KB, 50KB, 100KB" target="_blank" rel="noopener noreferrer">
+                        <i data-lucide="send" width="18" height="18"></i>
+                        <span class="share-link-text">Telegram</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://imresizer.in" target="_blank" rel="noopener noreferrer">
+                        <i data-lucide="facebook" width="18" height="18"></i>
+                        <span class="share-link-text">Facebook</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/intent/tweet?url=https://imresizer.in&text=Compress images to 20KB, 50KB, 100KB for exams - Free tool!" target="_blank" rel="noopener noreferrer">
+                        <i data-lucide="x" width="18" height="18"></i>
+                        <span class="share-link-text">X (Twitter)</span>
+                    </a>
+                </li>
+                <li>
+                    <button onclick="copyPageLink()">
+                        <i data-lucide="link" width="18" height="18"></i>
+                        <span class="share-link-text">Copy Link</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+
         <div class="footer-bottom">
-            <div>&copy; 2026 imresizer.textify.tools. All rights reserved. Made For Students</div>
+            <div>&copy; 2026 imresizer.in. All rights reserved. Made For Students</div>
             <div>Designed for Students</div>
         </div>
     </footer>
 
     <script>
-        // Security
-        document.addEventListener('contextmenu', event => event.preventDefault());
-
-        document.addEventListener('keydown', function(e) {
-            if (
-                e.key === 'F12' ||
-                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
-                (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S'))
-            ) {
-                e.preventDefault();
-                return false;
-            }
-        });
-
-        // Initialize icons
-        window.addEventListener('DOMContentLoaded', () => {
+        // Lucide icons initialization
+        document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
         });
+
+        // Copy link function
+        function copyPageLink() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert('Link copied to clipboard! Share it with your friends.');
+            }).catch(() => {
+                const textarea = document.createElement('textarea');
+                textarea.value = url;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                alert('Link copied to clipboard! Share it with your friends.');
+            });
+        }
+
+        // Remove any potential tracking parameters from URL
+        (function() {
+            var uri = window.location.toString();
+            var clean_uri = uri;
+            if (clean_uri.indexOf("?m=1") > 0) clean_uri = clean_uri.substring(0, clean_uri.indexOf("?m=1"));
+            else if (clean_uri.indexOf("&m=1") > 0) clean_uri = clean_uri.substring(0, clean_uri.indexOf("&m=1"));
+            if (clean_uri.indexOf("%3D") > 0) clean_uri = clean_uri.substring(0, clean_uri.indexOf("%3D"));
+            if (uri !== clean_uri) window.history.replaceState({}, document.title, clean_uri);
+        })();
     </script>
-  <script data-name="BMC-Widget" data-cfasync="false" 
-src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
-data-id="textify.tools" 
-data-description="Support me on Buy me a coffee!" 
-data-message="" 
-data-color="#FFC107" 
-data-position="Right" 
-data-x_margin="18" 
-data-y_margin="18">
-</script>
-  <script type='text/javascript'>
-//<![CDATA[
-(function() {
-    var uri = window.location.toString();
-    var clean_uri = uri;
-    if (clean_uri.indexOf("?m=1") > 0) clean_uri = clean_uri.substring(0, clean_uri.indexOf("?m=1"));
-    else if (clean_uri.indexOf("&m=1") > 0) clean_uri = clean_uri.substring(0, clean_uri.indexOf("&m=1"));
-    if (clean_uri.indexOf("%3D") > 0) clean_uri = clean_uri.substring(0, clean_uri.indexOf("%3D"));
-    if (uri !== clean_uri) window.history.replaceState({}, document.title, clean_uri);
-})();
-//]]>
-</script>
+
 </body>
 </html>
