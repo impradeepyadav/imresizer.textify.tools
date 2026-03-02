@@ -158,6 +158,12 @@
             letter-spacing: -0.5px;
         }
         .logo-text span { color: var(--primary); }
+        /* --- START OF UPDATE: Make .in thin and black --- */
+        .logo-text .domain {
+            font-weight: 300; /* Thin weight */
+            color: #000000;   /* Black color */
+        }
+        /* --- END OF UPDATE --- */
 
         /* MAIN LAYOUT */
         .container { 
@@ -321,6 +327,12 @@
         .footer-logo-text span { 
             color: var(--primary); 
         }
+        /* --- START OF UPDATE: Make footer .in thin and black (white for visibility) --- */
+        .footer-logo-text .domain {
+            font-weight: 300; /* Thin weight */
+            color: #ffffff;   /* White color for visibility on dark background. Change to #000000 if you insist, but it will be invisible. */
+        }
+        /* --- END OF UPDATE --- */
 
         .footer-links {
             list-style: none;
@@ -387,7 +399,7 @@
                 <div class="logo-icon-box">
                     <i data-lucide="crop" width="28" height="28"></i>
                 </div>
-                <div class="logo-text">Im<span>Resizer</span></div>
+                <div class="logo-text">Im<span>Resizer<span class="domain">.in</span></span></div>
             </a>
             <span style="font-size:12px; color:var(--text-light); font-weight:500; background: #f3f4f6; padding: 6px 10px; border-radius: 6px; border: 1px solid #e5e7eb;">Free Tool</span>
         </div>
@@ -500,7 +512,7 @@
                     <div class="footer-logo-icon">
                         <i data-lucide="crop" width="18" height="18"></i>
                     </div>
-                    <div class="footer-logo-text">Im<span>Resizer</span></div>
+                    <div class="footer-logo-text">Im<span>Resizer<span class="domain">.in</span></span></div>
                 </a>
                 <p>Trusted by students worldwide for accurate image resizing and compression. We help simplify your application process by providing instant and privacy-focused tools with always high-quality output.</p>
             </div>
