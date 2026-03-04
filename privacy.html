@@ -260,7 +260,7 @@
             margin-bottom: 40px; 
         }
 
-        /* ===== FOOTER - टूल पेज वाला स्टाइल (बिना शेयर आइकॉन के) ===== */
+        /* ===== FOOTER - 5 कॉलम वाला स्टाइल (टूल पेज जैसा) ===== */
         footer {
             background-color: var(--footer-bg);
             color: var(--footer-text);
@@ -274,8 +274,8 @@
             margin: 0 auto;
             padding: 0 25px;
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 40px;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            gap: 30px;
         }
 
         .footer-col h5 {
@@ -283,7 +283,6 @@
             font-size: 16px;
             font-weight: 700;
             margin-bottom: 20px;
-            margin-top: 0;
             letter-spacing: 0.5px;
         }
 
@@ -325,7 +324,7 @@
         /* --- START OF UPDATE: Make footer .in thin and black (white for visibility) --- */
         .footer-logo-text .domain {
             font-weight: 300; /* Thin weight */
-            color: #ffffff;   /* White color for visibility on dark background. Change to #000000 if you insist, but it will be invisible. */
+            color: #ffffff;   /* White color for visibility on dark background. */
         }
         /* --- END OF UPDATE --- */
 
@@ -501,9 +500,10 @@
         </div>
     </main>
 
-    <!-- ===== FOOTER - टूल पेज वाला स्टाइल (बिना शेयर आइकॉन के) ===== -->
+    <!-- ===== FOOTER - 5 कॉलम वाला (टूल पेज जैसा) ===== -->
     <footer>
         <div class="footer-container">
+            <!-- Column 1: Brand info with logo and description -->
             <div class="footer-col footer-brand">
                 <a href="/" class="footer-logo">
                     <div class="footer-logo-icon">
@@ -514,6 +514,7 @@
                 <p>Trusted by students worldwide for accurate image resizing and compression. We help simplify your application process by providing instant and privacy-focused tools with always high-quality output.</p>
             </div>
 
+            <!-- Column 2: Quick Links -->
             <div class="footer-col">
                 <h5>QUICK LINKS</h5>
                 <ul class="footer-links">
@@ -523,6 +524,7 @@
                 </ul>
             </div>
 
+            <!-- Column 3: Legal & Info -->
             <div class="footer-col">
                 <h5>LEGAL & INFO</h5>
                 <ul class="footer-links">
@@ -531,9 +533,31 @@
                     <li><a href="terms.html">Terms of Use</a></li>
                 </ul>
             </div>
+
+            <!-- Column 4: Tools -->
+            <div class="footer-col">
+                <h5>TOOLS</h5>
+                <ul class="footer-links">
+                    <li><a href="image-compressor.html">Image Compressor</a></li>
+                    <li><a href="pdf-converter.html">PDF Converter</a></li>
+                    <li><a href="signature-maker.html">Signature Maker</a></li>
+                    <li><a href="passport-photo.html">Passport Photo</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 5: Resources -->
+            <div class="footer-col">
+                <h5>RESOURCES</h5>
+                <ul class="footer-links">
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="guides.html">Guides</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="sitemap.html">Sitemap</a></li>
+                </ul>
+            </div>
         </div>
 
-        <!-- FOOTER BOTTOM - बिना शेयर आइकॉन के -->
+        <!-- FOOTER BOTTOM -->
         <div class="footer-bottom">
             <div>&copy; 2026 imresizer.in. All rights reserved. Made For Students</div>
             <div>Designed for Students</div>
