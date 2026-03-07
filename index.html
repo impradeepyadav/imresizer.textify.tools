@@ -46,16 +46,15 @@
    <link rel="apple-touch-icon" href="apple-touch-icon.png">
    <link rel="manifest" href="site.webmanifest">
     
-    <!-- SoftwareApplication Schema - Google Safe -->
    <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "ImResizer.in",
+  "@type": "WebApplication",
+  "name": "ImResizer",
   "url": "https://imresizer.in/",
-  "applicationCategory": "GraphicsApplication",
-  "operatingSystem": "Web",
-  "description": "Free online tool to compress exam form photos to 20KB, 50KB, or 100KB. Optimized for JEE, NEET, SSC, and UPSC forms.",
+  "description": "Free online tool to compress photos to 20KB, 50KB, or 100KB. Perfect for JEE, NEET, SSC, and UPSC exam forms.",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "All",
   "offers": {
     "@type": "Offer",
     "price": "0",
@@ -64,7 +63,6 @@
 }
 </script>
 
-    <!-- FAQ Schema - Google Safe -->
    <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -72,18 +70,26 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "How to compress image to 20KB?",
+      "name": "How to compress image to 20KB, 50KB, or 100KB?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Upload your image to ImResizer, select 20KB as the target size, and the tool will automatically compress it to the required size for your form."
+        "text": "Upload your photo to ImResizer, select your target size (20KB, 50KB, or 100KB), and the tool will automatically compress it for your exam form."
       }
     },
     {
       "@type": "Question",
-      "name": "How to compress image to 50KB or 100KB?",
+      "name": "Is ImResizer safe for private documents?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Choose the 50KB or 100KB option after uploading your photo. The tool will instantly resize it for JEE, NEET, or UPSC applications."
+        "text": "Yes. ImResizer is privacy-friendly. All image processing happens securely, and no photos are stored on our servers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use ImResizer for UPSC or SSC forms?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, ImResizer is specifically designed to meet the photo size requirements of government portals like UPSC, SSC, JEE, and NEET."
       }
     }
   ]
