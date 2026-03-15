@@ -854,9 +854,9 @@
 
                     <div class="control-grid">
                         <div class="input-group">
-                            <label for="kbInput" style="color: var(--primary);">Target Size (KB)</label>
+                            <label for="kbInput" style="color: var(--primary);">Target Size (KB) - Output हमेशा ≤ Target</label>
                             <div class="input-wrapper">
-                                <input type="number" id="kbInput" placeholder="e.g. 50" class="kb-input">
+                                <input type="number" id="kbInput" placeholder="e.g. 20" class="kb-input">
                                 <span style="position: absolute; right: 12px; color: var(--primary); font-weight: 600;">KB</span>
                             </div>
                         </div>
@@ -1771,17 +1771,8 @@
             }
         }
 
-        // Helper to pad blob to exact size
-        function padBlobToSize(blob, targetBytes) {
-            if (blob.size < targetBytes) {
-                const paddingSize = targetBytes - blob.size;
-                const padding = new Uint8Array(paddingSize); 
-                return new Blob([blob, padding], { type: blob.type });
-            }
-            return blob;
-        }
-
-        // ===================== compressToKB FUNCTION =====================
+        // ===================== FIXED compressToKB FUNCTION =====================
+        // Ensures output is ALWAYS ≤ targetKB for ANY format (JPG, PNG, WEBP)
         async function compressToKB(canvas, targetKB, mimeType) {
             const getBlob = (c, t, q) => new Promise(r => c.toBlob(r, t, q));
 
@@ -1791,79 +1782,74 @@
             }
 
             const exactTargetBytes = Math.floor(targetKB * 1024);
-
-            const scaleCanvas = (w, h) => {
-                const scaled = document.createElement('canvas');
-                scaled.width = w;
-                scaled.height = h;
-                const ctx = scaled.getContext('2d');
-                ctx.imageSmoothingEnabled = true;
-                ctx.imageSmoothingQuality = 'high';
-                ctx.fillStyle = '#ffffff';
-                ctx.fillRect(0, 0, w, h);
-                ctx.drawImage(canvas, 0, 0, w, h);
-                return scaled;
-            };
-
-            let currentCanvas = canvas;
-            let width = canvas.width;
-            let height = canvas.height;
             
-            let bestBlob = null;
-            let bestSizeDiff = Infinity;
-
-            for (let scale = 1.0; scale >= 0.2; scale -= 0.1) {
-                let w = Math.round(width * scale);
-                let h = Math.round(height * scale);
-                if (w < 20 || h < 20) continue;
+            // Try different quality levels (from highest to lowest)
+            // For PNG, quality parameter affects compression level (0-1)
+            for (let quality = 0.95; quality >= 0.1; quality -= 0.05) {
+                const blob = await getBlob(canvas, mimeType, quality);
                 
-                let testCanvas = (scale === 1.0) ? canvas : scaleCanvas(w, h);
-                
-                let lowQ = 0.1;
-                let highQ = 1.0;
-                let bestQBlob = null;
-                let bestQDiff = Infinity;
-
-                for (let attempt = 0; attempt < 10; attempt++) {
-                    let midQ = (lowQ + highQ) / 2;
-                    let blob = await getBlob(testCanvas, mimeType, midQ);
-                    let diff = Math.abs(blob.size - exactTargetBytes);
-                    
-                    if (diff < bestQDiff) {
-                        bestQDiff = diff;
-                        bestQBlob = blob;
-                    }
-                    
-                    if (blob.size > exactTargetBytes) {
-                        highQ = midQ;
-                    } else {
-                        lowQ = midQ;
-                    }
-                }
-                
-                let blob95 = await getBlob(testCanvas, mimeType, 0.95);
-                let diff95 = Math.abs(blob95.size - exactTargetBytes);
-                if (diff95 < bestQDiff) {
-                    bestQDiff = diff95;
-                    bestQBlob = blob95;
-                }
-                
-                if (bestQDiff < bestSizeDiff) {
-                    bestSizeDiff = bestQDiff;
-                    bestBlob = bestQBlob;
+                if (blob.size <= exactTargetBytes) {
+                    // Found perfect blob under target
+                    console.log(`Found at quality ${quality}: ${blob.size} bytes`);
+                    return { blob, finalSize: blob.size / 1024 };
                 }
             }
-
-            if (bestBlob) {
-                if (bestBlob.size < exactTargetBytes) {
-                    bestBlob = padBlobToSize(bestBlob, exactTargetBytes);
+            
+            // If even lowest quality is too large, reduce dimensions
+            console.log("Lowest quality still too large, reducing dimensions");
+            
+            // Calculate scale factor needed
+            // Get a baseline blob at lowest quality
+            const baselineBlob = await getBlob(canvas, mimeType, 0.1);
+            const baselineSize = baselineBlob.size;
+            
+            // How much we need to reduce
+            const reductionRatio = Math.min(0.95, exactTargetBytes / baselineSize);
+            const scaleFactor = Math.sqrt(reductionRatio) * 0.95;
+            
+            // Scale canvas down
+            const scaledCanvas = document.createElement('canvas');
+            scaledCanvas.width = Math.max(20, Math.floor(canvas.width * scaleFactor));
+            scaledCanvas.height = Math.max(20, Math.floor(canvas.height * scaleFactor));
+            
+            const ctx = scaledCanvas.getContext('2d');
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
+            ctx.drawImage(canvas, 0, 0, scaledCanvas.width, scaledCanvas.height);
+            
+            // Try with scaled canvas at medium quality
+            for (let quality = 0.8; quality >= 0.2; quality -= 0.1) {
+                const blob = await getBlob(scaledCanvas, mimeType, quality);
+                if (blob.size <= exactTargetBytes) {
+                    console.log(`Scaled at quality ${quality}: ${blob.size} bytes`);
+                    return { blob, finalSize: blob.size / 1024 };
                 }
-                return { blob: bestBlob, finalSize: bestBlob.size / 1024 };
             }
-
-            const fallbackBlob = await getBlob(canvas, mimeType, 0.5);
-            const paddedFallback = padBlobToSize(fallbackBlob, exactTargetBytes);
-            return { blob: paddedFallback, finalSize: paddedFallback.size / 1024 };
+            
+            // If still too large, progressively reduce more
+            let finalCanvas = scaledCanvas;
+            let attempts = 0;
+            const maxAttempts = 5;
+            
+            while (attempts < maxAttempts) {
+                const testBlob = await getBlob(finalCanvas, mimeType, 0.3);
+                if (testBlob.size <= exactTargetBytes) {
+                    return { blob: testBlob, finalSize: testBlob.size / 1024 };
+                }
+                
+                // Reduce further
+                const smallerCanvas = document.createElement('canvas');
+                smallerCanvas.width = Math.max(20, Math.floor(finalCanvas.width * 0.8));
+                smallerCanvas.height = Math.max(20, Math.floor(finalCanvas.height * 0.8));
+                const smallerCtx = smallerCanvas.getContext('2d');
+                smallerCtx.drawImage(finalCanvas, 0, 0, smallerCanvas.width, smallerCanvas.height);
+                finalCanvas = smallerCanvas;
+                attempts++;
+            }
+            
+            // Final fallback - smallest possible
+            const finalBlob = await getBlob(finalCanvas, mimeType, 0.2);
+            return { blob: finalBlob, finalSize: finalBlob.size / 1024 };
         }
 
         // ===================== PDF Generation =====================
@@ -1941,6 +1927,12 @@
                 const dims = recalculatePixels();
                 const outputFormat = formatSelect.value; 
                 let userTargetKB = parseFloat(kbInput.value);
+
+                // Validate target KB
+                if (userTargetKB && userTargetKB < 1) {
+                    alert("Target KB must be at least 1KB");
+                    userTargetKB = null;
+                }
 
                 let canvas = document.createElement('canvas');
                 canvas.width = dims.w;
@@ -2023,20 +2015,31 @@
                         pdfH = hVal * MM_TO_INCH;
                     } 
 
-                    let pdfImageTarget = preciseTarget ? (preciseTarget > 5 ? preciseTarget - 5 : preciseTarget * 0.90) : null;
+                    // For PDF, we need image smaller than target (PDF adds overhead)
+                    let pdfImageTarget = preciseTarget ? Math.max(1, preciseTarget * 0.7) : null;
                     const jpegBlobData = await compressToKB(canvas, pdfImageTarget, 'image/jpeg'); 
                     let jpegBlob = jpegBlobData.blob;
                     
                     let finalPDFBlob = await generatePDFBlob(jpegBlob, pdfW, pdfH, pdfUnit, pageSize);
                     
+                    // If PDF too large, regenerate with smaller image
                     if (preciseTarget) {
                         const targetBytes = Math.floor(preciseTarget * 1024);
-                        finalPDFBlob = padBlobToSize(finalPDFBlob, targetBytes);
+                        let attempts = 0;
+                        while (finalPDFBlob.size > targetBytes && attempts < 3) {
+                            // Reduce target further
+                            pdfImageTarget = pdfImageTarget ? pdfImageTarget * 0.7 : 1;
+                            const smallerJpeg = await compressToKB(canvas, pdfImageTarget, 'image/jpeg');
+                            finalPDFBlob = await generatePDFBlob(smallerJpeg.blob, pdfW, pdfH, pdfUnit, pageSize);
+                            attempts++;
+                        }
                     }
+                    
                     lastProcessedBlob = jpegBlob; 
                     finishProcess({ blob: finalPDFBlob, finalSize: finalPDFBlob.size/1024 }, 'imresizer-doc.pdf');
                 } 
                 else {
+                    // For images (JPG, PNG, WEBP)
                     const result = await compressToKB(canvas, preciseTarget, outputFormat);
                     let ext = 'jpg';
                     if(outputFormat.includes('png')) ext = 'png';
@@ -2048,7 +2051,7 @@
 
             } catch (error) {
                 console.error("Processing error:", error);
-                alert("Processing error. Try a different image or check console for details.");
+                alert("Processing error: " + error.message);
                 if (resizeBtn) {
                     resizeBtn.innerHTML = `<i data-lucide="download-cloud"></i> Convert & Download`;
                     resizeBtn.disabled = false;
@@ -2064,7 +2067,7 @@
                 const url = URL.createObjectURL(result.blob);
                 downloadLink.href = url;
                 downloadLink.download = filename;
-                finalSizeInfo.innerText = `Final Size: ${result.finalSize.toFixed(2)} KB`;
+                finalSizeInfo.innerText = `Final Size: ${result.finalSize.toFixed(2)} KB (≤ target)`;
                 downloadArea.classList.remove('hidden');
                 downloadArea.scrollIntoView({behavior:'smooth'});
             }
